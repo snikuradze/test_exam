@@ -1,0 +1,60 @@
+TC1 'Login'
+STR:
+1. Open login page
+2. Fill accepted username and password in respective fields
+3. Click on 'Login' button
+
+ER: Inventory page is opened, 'Cart' link is displayed at the top
+
+TC2 'Add products to cart'
+Pre-condition: log in with accepted user
+STR:
+1. Click on 'Add to cart' button for 3 products
+
+ER:
+- 'Add to cart' button changed to 'Remove' button for added products to cart
+- 'Cart' link is displayed with a badge with 3 added products
+
+TC3 'Product in cart page'
+Pre-conditions:
+- log in with accepted user
+- one product has been added to cart
+1. Click on 'cart' link
+
+ER: Cart page is opened, previously added product to cart is displayed
+
+TC4 'Sorting products in ascending price order'
+Pre-condition: log in with accepted user
+1. Click on the products sorting dropdown
+2. Select 'Price (low to high)' option
+
+ER: Products are sorted from the cheapest to the most expensive
+
+TC5 'Validate user information in checkout form'
+Pre-conditions:
+- log in with accepted user
+- one product has been added to cart
+- open the cart
+1. Click on 'Checkout' button
+2. Fill some data in all fields on user information page
+3. Click on 'Continue' button
+
+ER:
+- Overview page is opened
+- Total price and 'Finish' button are displayed
+
+TC6 'Pass checkout'
+Pre-conditions:
+- log in with accepted user
+- one product has been added to cart
+- open the cart
+- go to user information page
+- fill the form and proceed to overview page
+1. Click on 'Finish' button
+
+ER:
+- Complete page is opened
+- Logo is displayed
+Post-condition:
+- click on 'Back home' button
+- Inventory page with a cart without badges is displayed
