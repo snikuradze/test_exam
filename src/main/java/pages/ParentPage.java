@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 abstract class ParentPage extends ActionsOnElements{
@@ -14,5 +15,7 @@ abstract class ParentPage extends ActionsOnElements{
     protected void checkUrlWithPattern(){
         logger.debug(webDriver.getCurrentUrl());
         String actualURL = webDriver.getCurrentUrl();
+        Assert.assertTrue("\n ActualURL " + actualURL + "\n " + "ExpectedURL pattern " + baseUrl + getRelativeUrl() + " \n ", actualURL.matches(baseUrl + getRelativeUrl()));
+
     }
 }
