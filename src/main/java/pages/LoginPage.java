@@ -43,5 +43,10 @@ public class LoginPage extends ParentPage{
         clickOnElement(buttonLogin);
         return this;
     }
-
+    public ProductPage loginWithValidCredWithoutOpenPage(){
+        enterUserNameIntoLoginInput("standard_user");
+        enterPasswordIntoPasswordInput("secret_sauce");
+        clickOnButtonLogin();
+        return new ProductPage(webDriver);
+    }
 }
