@@ -10,12 +10,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.LoginPage;
+import pages.ProductPage;
 
 import java.time.Duration;
 
 public class BaseTest {
     WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
+    protected LoginPage loginPage;
+    protected ProductPage productPage;
 
     @Before
     public void setUp(){
@@ -24,10 +28,13 @@ public class BaseTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         logger.info("Browser was opened");
+        loginPage = new LoginPage(webDriver);
+        productPage = new ProductPage(webDriver);
     }
 
     @After
     public void tearDown(){
+        webDriver.quit();
         logger.info("Browser was closed");
         logger.info("------" + testName.getMethodName() + " was ended ---------------\n");
     }
