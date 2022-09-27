@@ -10,22 +10,10 @@ import java.util.List;
 
 public class ProductPage extends ParentPage{
     private HeaderElement headerElement = new HeaderElement(webDriver);
-/*  @FindBy(xpath = ".//button[@id='add-to-cart-sauce-labs-backpack']")
-    private WebElement addToCartSauceLabsBackpack;
-    @FindBy(xpath = ".//button[@id='add-to-cart-sauce-labs-bike-light']")
-    private WebElement addToCartSauceLabsBikeLight;
-    @FindBy(xpath = ".//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']")
-    private WebElement addToCartSauceLabsBoltTShirt;
-    @FindBy(xpath = ".//button[@id='remove-sauce-labs-backpack']")
-    private WebElement removeSauceLabsBackpack;
-    @FindBy(xpath = ".//button[@id='remove-sauce-labs-bike-light']")
-    private WebElement removeSauceLabsBikeLight;
-    @FindBy(xpath = ".//button[@id='remove-sauce-labs-bolt-t-shirt']")
-    private WebElement removeSauceLabsBoltTShirt;*/
     @FindBy(xpath = ".//*[text()='Add to cart']")
     private List<WebElement> buttonAddToCart;
     @FindBy(xpath = ".//*[text()='Remove']")
-    private List<WebElement> buttonRemove;
+    public List<WebElement> buttonRemove;
     @FindBy(xpath = ".//*[@class='shopping_cart_badge']")
     private WebElement cartBadge;
     public ProductPage(WebDriver webDriver) {
@@ -53,11 +41,7 @@ public class ProductPage extends ParentPage{
         return this;
     }
     public ProductPage clickOnAddToCartButton(int productIndex) {
-/*      clickOnElement(addToCartSauceLabsBackpack);
-        clickOnElement(addToCartSauceLabsBikeLight);
-        clickOnElement(addToCartSauceLabsBoltTShirt);*/
         clickOnElement(buttonAddToCart.get(productIndex));
-        logger.info(buttonAddToCart + " was clicked");
         return this;
     }
     public ProductPage checkQuantityOfRemoveButtonDisplayed(int numberOfRemoveButtons){
