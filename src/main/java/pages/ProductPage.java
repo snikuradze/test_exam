@@ -1,10 +1,10 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import pages.elements.HeaderElement;
 
 import java.util.List;
@@ -66,14 +66,14 @@ public class ProductPage extends ParentPage{
         return this;
     }
     public ProductPage checkProductsOrder(){
-        if (productPrice.get(0).getAccessibleName().equalsIgnoreCase("29.99")){
-            Assert.assertEquals("Name (A to Z)", activeOption.getText());
-        } else if (productPrice.get(0).getAccessibleName().equalsIgnoreCase("15.99")) {
-            Assert.assertEquals("Name (Z to A)", activeOption.getText());
-        } else if (productPrice.get(0).getAccessibleName().equalsIgnoreCase("7.99")) {
-            Assert.assertEquals("Price (low to high)", activeOption.getText());
-        } else if (productPrice.get(0).getAccessibleName().equalsIgnoreCase("49.99")) {
-            Assert.assertEquals("Price (high to low)", activeOption.getText());
+        if (activeOption.getText().equalsIgnoreCase("Name (A to Z)")){
+            Assert.assertTrue("Sorted NOT A to Z", productPrice.get(0).getText().equalsIgnoreCase("$29.99"));
+        } else if (activeOption.getText().equalsIgnoreCase("Name (Z to A)")) {
+            Assert.assertTrue("Sorted NOT Z to A", productPrice.get(0).getText().equalsIgnoreCase("$15.99"));
+        } else if (activeOption.getText().equalsIgnoreCase("Price (low to high)")) {
+            Assert.assertTrue("Sorted NOT low to high", productPrice.get(0).getText().equalsIgnoreCase("$7.99"));
+        } else if (activeOption.getText().equalsIgnoreCase("Price (high to low)")) {
+            Assert.assertTrue("Sorted NOT high to low", productPrice.get(0).getText().equalsIgnoreCase("$49.99"));
         }
         return this;
     }
