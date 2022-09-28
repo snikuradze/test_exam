@@ -48,4 +48,10 @@ public class UserInfoPage extends ParentPage{
         clickOnElement(buttonContinue);
         return new OverviewPage(webDriver);
     }
+    public UserInfoPage fillFormWithValidData(){
+        enterFirstName("John");
+        enterLastName("Doe");
+        enterPostalCode("ABC123");
+        return this;
+    }
 }

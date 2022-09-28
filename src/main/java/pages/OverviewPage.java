@@ -23,4 +23,9 @@ public class OverviewPage extends ParentPage{
         Assert.assertTrue("Overview page is not loaded", isElementDisplayed(buttonFinish) & webDriver.findElement(By.className("summary_total_label")).isDisplayed());
         return this;
     }
+
+    public CompletePage clickOnFinishButton() {
+        clickOnElement(buttonFinish);
+        return new CompletePage(webDriver);
+    }
 }

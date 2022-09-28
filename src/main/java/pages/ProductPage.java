@@ -77,4 +77,9 @@ public class ProductPage extends ParentPage{
         }
         return this;
     }
+    public ProductPage checkBadgesNotDisplayedOnCart(){
+        Assert.assertFalse("Badges are displayed", isElementDisplayed(cartBadge));
+        logger.info("Badges are not displayed");
+        return this;
+    }
 }
