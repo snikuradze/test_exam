@@ -26,7 +26,7 @@ public class BaseTest {
         logger.info("------" + testName.getMethodName() + " was started ----------");
         webDriver = initDriver();
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         logger.info("Browser was opened");
         loginPage = new LoginPage(webDriver);
         productPage = new ProductPage(webDriver);
