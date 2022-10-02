@@ -22,6 +22,8 @@ public class ProductPage extends ParentPage{
     private WebElement activeOption;
     @FindBy(xpath = ".//*[@class='inventory_item_price']")
     private List<WebElement> productPrice;
+    @FindBy(xpath = ".//*[@class='inventory_item_name']")
+    private List<WebElement> productName;
     public ProductPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -66,13 +68,17 @@ public class ProductPage extends ParentPage{
     }
     public ProductPage checkProductsOrder(){
         if (activeOption.getText().equalsIgnoreCase("Name (A to Z)")){
-            Assert.assertTrue("Sorted NOT A to Z", productPrice.get(0).getText().equalsIgnoreCase("$29.99"));
+            Assert.assertTrue("Sorted NOT A to Z", productName.get(0).getText().equalsIgnoreCase("Sauce Labs Backpack"));
+            logger.info("Sorted by name from A to Z");
         } else if (activeOption.getText().equalsIgnoreCase("Name (Z to A)")) {
-            Assert.assertTrue("Sorted NOT Z to A", productPrice.get(0).getText().equalsIgnoreCase("$15.99"));
+            Assert.assertTrue("Sorted NOT Z to A", productName.get(0).getText().equalsIgnoreCase("Test.allTheThings() T-Shirt (Red)"));
+            logger.info("Sorted by name from Z to A");
         } else if (activeOption.getText().equalsIgnoreCase("Price (low to high)")) {
             Assert.assertTrue("Sorted NOT low to high", productPrice.get(0).getText().equalsIgnoreCase("$7.99"));
+            logger.info("Sorted by price from Low to High");
         } else if (activeOption.getText().equalsIgnoreCase("Price (high to low)")) {
             Assert.assertTrue("Sorted NOT high to low", productPrice.get(0).getText().equalsIgnoreCase("$49.99"));
+            logger.info("Sorted by price from High to Low");
         }
         return this;
     }

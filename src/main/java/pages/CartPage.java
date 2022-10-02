@@ -29,6 +29,7 @@ public class CartPage extends ParentPage{
     public CartPage checkCorrectProductIsAdded(int productIndex){
         ProductPage productPage = new ProductPage(webDriver);
         Assert.assertEquals("Incorrect product is displayed", productPage.buttonRemove.get(productIndex).getAttribute("name"), buttonRemove.get(productIndex).getAttribute("name"));
+        logger.info(buttonRemove.get(productIndex).getAttribute("name").substring(7) + " product is added");
         return this;
     }
     public UserInfoPage clickOnCheckoutButton(){
